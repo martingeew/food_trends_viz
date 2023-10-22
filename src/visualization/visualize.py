@@ -3,12 +3,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-data = pd.read_pickle("../../data/interim/ramen_data_by_country.pkl")
+data = pd.read_pickle("../../data/processed/ramen_by_country_12_yr_ma.pkl")
 
-# Setting 'Month' as the index
-data.set_index('Month', inplace=True)
-
-data_moving_avg_12 = data.rolling(window=12).mean()
+# change to ax subplot
 
 plt.figure(figsize=(15, 7))  # Adjust the figure size for better visualization
 
