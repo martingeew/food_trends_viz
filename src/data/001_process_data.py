@@ -5,12 +5,12 @@ import pandas as pd
 # --------------------------------------------------------------
 
 """ 
-The objective of this script is to create 2 figures for a report 
-to evaluate pump performance.
+The objective of this script is to create a dataset of ramen google trends
+by country.
 
 Figures
-- Motor power (4x)
-- Motor speed vs. pump temperature in celsius
+- 
+- 
 
 """
 
