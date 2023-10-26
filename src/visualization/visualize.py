@@ -20,15 +20,15 @@ country_colors = {
     # Add any other countries with their desired colors
 }
 
-xmin = data_moving_avg_12.index.min().year
-xmax = data_moving_avg_12.index.max().year + 4  # Adding 4 years to the maximum year for some padding on the right
+xmin = data.index.min().year
+xmax = data.index.max().year + 4  # Adding 4 years to the maximum year for some padding on the right
 #plt.xlim(xmin, xmax)
 
-LABEL_Y = [data_moving_avg_12[country].iloc[-1] for country in data_moving_avg_12.columns]
+LABEL_Y = [data[country].iloc[-1] for country in data.columns]
 
 # Plotting each country's data with assigned custom colors
-for country in data_moving_avg_12.columns:
-    plt.plot(data_moving_avg_12.index, data_moving_avg_12[country], label=country, color=country_colors[country])
+for country in data.columns:
+    plt.plot(data.index, data[country], label=country, color=country_colors[country])
 
 plt.xlabel('Month')
 plt.ylabel('12-Month Moving Average of Ramen Interest')
