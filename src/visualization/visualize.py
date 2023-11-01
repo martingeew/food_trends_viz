@@ -37,7 +37,7 @@ ax.set_xticks(ax.get_xticks())  # This ensures that the x-ticks are set before r
 ax.set_xticklabels(ax.get_xticklabels())  # Rotate x-axis labels for better visibility
 
 # Set tick label font size to 12pt
-ax.tick_params(axis='both', which='major', labelsize=17)
+ax.tick_params(axis='both', which='major', labelsize=16)
 
 # Set tick colours
 ax.tick_params(axis='both', colors=GREY40)
@@ -113,7 +113,7 @@ for country in data.columns:
         color=color, 
         fontsize=15, 
         weight="bold", 
-        fontfamily="Montserrat", 
+        fontfamily="Arial", 
         va="center"
     )
     
@@ -143,12 +143,13 @@ ax.set_yticklabels(y_ticks, weight=500,
 
 ax.grid(True, axis='y', color=GREY91, lw=1.0)  # Ensure the horizontal grid is enabled
 
-fig.suptitle('Google searches for Ramen in selected countries',fontsize=30, x=0.065, ha='left')
+fig.suptitle('Google searches for Ramen in selected countries',fontsize=30, x=0.065, ha='left',color=GREY10)
 ax.set_title(
     '12-month moving average, 2004-2023 (100 = peak popularity)',
     loc='left',
     fontsize=18,
-    pad=20
+    pad=24,
+    color=GREY30
     )
 
 ax.annotate(
