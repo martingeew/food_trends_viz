@@ -172,5 +172,3 @@ ax.annotate(
 
 plt.tight_layout()
 plt.show()
-
-
