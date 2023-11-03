@@ -22,6 +22,20 @@ GREY75 = "#bfbfbf"
 GREY91 = "#e8e8e8"
 GREY98 = "#fafafa"
 
+CORAL = "#E63946"
+TURQUOISE = "#2A9D8F"
+GOLD = "#F4A261"
+PURPLE = "#5A189A"
+TEAL = "#1B7B7E"
+ROSE = "#FF4C29"
+SIENNA = "#985F6F"
+BLUE = "#0077B6"
+PEACH = "#FFAD69"
+SKY = "#8ACBF7"
+MUTED_BLACK = "#2C2C2C"
+MUTED_ORANGE = "#D48344"
+CHARCOAL = "#333333"
+
 # Set background colours
 fig.patch.set_facecolor(GREY98) # sets colour of entire background (incl. outside the plot area)
 ax.set_facecolor(GREY98) # set colour of plot area
@@ -42,6 +56,9 @@ ax.tick_params(axis='both', which='major', labelsize=16)
 # Set tick colours
 ax.tick_params(axis='both', colors=GREY40)
 
+# Set font family
+font_family='Sans-Serif'
+
 # --------------------------------------------------------------
 # Create line plot with annotated labels
 # --------------------------------------------------------------
@@ -56,6 +73,16 @@ country_colors = {
     "UK": "red",  # UK: red
     # Add any other countries with their desired colors
 }
+
+country_colors = {
+    "New Zealand": MUTED_BLACK,
+    "Germany": GOLD,
+    "Australia": SKY,
+    "US": BLUE,
+    "Netherlands": MUTED_ORANGE,
+    "UK": CORAL
+}
+
 
 # Plotting each country's data with assigned custom colors
 for country in data.columns:
@@ -113,7 +140,7 @@ for country in data.columns:
         color=color, 
         fontsize=15, 
         weight="bold", 
-        fontfamily="Arial", 
+        fontfamily=font_family, 
         va="center"
     )
     
@@ -143,13 +170,23 @@ ax.set_yticklabels(y_ticks, weight=500,
 
 ax.grid(True, axis='y', color=GREY91, lw=1.0)  # Ensure the horizontal grid is enabled
 
-fig.suptitle('Google searches for Ramen in selected countries',fontsize=30, x=0.065, ha='left',color=GREY10)
+fig.suptitle(
+    'Google searches for Ramen in selected countries',
+    fontsize=30, 
+    x=0.065, 
+    ha='left',
+    color=CHARCOAL, 
+    fontfamily=font_family,
+    weight="bold", 
+    )
+
 ax.set_title(
     '12-month moving average, 2004-2023 (100 = peak popularity)',
     loc='left',
     fontsize=18,
     pad=24,
-    color=GREY30
+    color=CHARCOAL,
+    fontfamily=font_family
     )
 
 ax.annotate(
@@ -158,7 +195,8 @@ ax.annotate(
     xycoords='axes fraction',
     ha='right',
     va="center",
-    fontsize=14
+    fontsize=14,
+    fontfamily=font_family
 )
 
 ax.annotate(
@@ -167,7 +205,8 @@ ax.annotate(
     xycoords='axes fraction',
     ha='left',
     va="center",
-    fontsize=14
+    fontsize=14,
+    fontfamily=font_family
 )
 
 plt.tight_layout()
