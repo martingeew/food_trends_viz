@@ -2,6 +2,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from plot_utils import save_plot_as_image
 
 data = pd.read_pickle("../../data/processed/ramen_by_country_12_month_ma.pkl")
 
@@ -86,7 +87,7 @@ country_colors = {
 
 # Plotting each country's data with assigned custom colors
 for country in data.columns:
-    ax.plot(data.index, data[country], label=country, color=country_colors[country])
+    ax.plot(data.index, data[country], label=country, color=country_colors[country],linewidth=3)
     
 # Set size of plot to accomodate text labels
 xmin = data.index.min()
@@ -210,4 +211,5 @@ ax.annotate(
 )
 
 plt.tight_layout()
+save_plot_as_image(filename='ramen_trend_by_country') # Save the image into a folder
 plt.show()
