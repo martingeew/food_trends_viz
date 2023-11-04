@@ -25,7 +25,7 @@ GREY98 = "#fafafa"
 
 CORAL = "#E63946"
 TURQUOISE = "#2A9D8F"
-GOLD = "#F4A261"
+GOLD = "#DAA520"
 PURPLE = "#5A189A"
 TEAL = "#1B7B7E"
 ROSE = "#FF4C29"
@@ -34,7 +34,7 @@ BLUE = "#0077B6"
 PEACH = "#FFAD69"
 SKY = "#8ACBF7"
 MUTED_BLACK = "#2C2C2C"
-MUTED_ORANGE = "#D48344"
+SUNSET_ORANGE = "#FC8D62"
 CHARCOAL = "#333333"
 
 # Set background colours
@@ -44,8 +44,8 @@ ax.set_facecolor(GREY98) # set colour of plot area
 # Customize spines
 ax.spines["right"].set_color("none")
 ax.spines["top"].set_color("none")
-ax.spines["left"].set_color(GREY91)
-ax.spines["bottom"].set_color(GREY91)
+ax.spines["left"].set_color("none")
+ax.spines["bottom"].set_color("none")
 
 ax.set_xticks(ax.get_xticks())  # This ensures that the x-ticks are set before rotation
 
@@ -54,11 +54,19 @@ ax.set_xticklabels(ax.get_xticklabels())  # Rotate x-axis labels for better visi
 # Set tick label font size to 12pt
 ax.tick_params(axis='both', which='major', labelsize=16)
 
-# Set tick colours
-ax.tick_params(axis='both', colors=GREY40)
+# Set tick color for the x-axis
+ax.tick_params(axis='x', colors=GREY40)
+
+# Remove ticks and labels for the y-axis
+ax.tick_params(axis='y', left=False, labelleft=True)
 
 # Set font family
-font_family='Sans-Serif'
+#font_family='Corbel'
+font_family='Consolas' # techy feel
+#font_family='Comic Sans MS' # very casual
+#font_family='Candara' # sans-serif but more rounded
+
+
 
 # --------------------------------------------------------------
 # Create line plot with annotated labels
@@ -66,21 +74,11 @@ font_family='Sans-Serif'
 
 # Define custom colors for each country
 country_colors = {
-    "New Zealand": "green",  # NZ: green
-    "Germany": "black",  # Germany: black
-    "Australia": "#DAA520",  # Aus: dark gold
-    "US": "blue",  # US: american blue (standard blue used here)
-    "Netherlands": "orange",  # Netherlands: Dutch orange (standard orange used here)
-    "UK": "red",  # UK: red
-    # Add any other countries with their desired colors
-}
-
-country_colors = {
     "New Zealand": MUTED_BLACK,
     "Germany": GOLD,
     "Australia": SKY,
     "US": BLUE,
-    "Netherlands": MUTED_ORANGE,
+    "Netherlands": SUNSET_ORANGE,
     "UK": CORAL
 }
 
@@ -157,24 +155,25 @@ x_tick_labels = pd.date_range(start=start, end=end, freq=frequency)
 
 ax.set_xticks(x_tick_labels)
 ax.set_xticklabels(x_tick_labels.strftime('%Y'), weight=500,
-    color=GREY40) 
+    color=GREY40, fontfamily=font_family) 
 
 # Customize the start, end, and frequency of the horizontal grid lines
 y_start = 0.0
 y_end = 100
 y_frequency = 10
 y_ticks = np.arange(y_start, y_end + y_frequency, y_frequency)
+y_ticks = np.round(y_ticks).astype(int)
 
 ax.set_yticks(y_ticks)
 ax.set_yticklabels(y_ticks, weight=500,
-    color=GREY40) 
+    color=GREY40,fontfamily=font_family) 
 
 ax.grid(True, axis='y', color=GREY91, lw=1.0)  # Ensure the horizontal grid is enabled
 
 fig.suptitle(
     'Google searches for Ramen in selected countries',
     fontsize=30, 
-    x=0.065, 
+    x=0.045, # set padding on the left of the heading
     ha='left',
     color=CHARCOAL, 
     fontfamily=font_family,
