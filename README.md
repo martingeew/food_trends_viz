@@ -8,7 +8,7 @@ To execute the workflow, run the Python files in the following order:
 
 1. `src\data\001_process_data.py`
 2. `src\features\002_transform_data.py`
-3. `src\visualization\003_plot_figures.py`
+3. `src\visualization\003_visualize.py`
 
 ## Final plot
 
