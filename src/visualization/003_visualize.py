@@ -101,7 +101,6 @@ xmax = data.index.max() + pd.DateOffset(
 ax.set_xlim(xmin, xmax)
 
 # Define the last value for each country
-# LABEL_Y = [data[country].iloc[-1] for country in data.columns]
 label_y = {
     "New Zealand": 70.0,
     "Germany": 83.75,
